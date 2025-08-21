@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+
+body {
+  height: 400vh;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
+}
+
+
+#projects, #skills, #contact {
+  scroll-margin-top: 0;
+  scroll-margin-bottom: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  animation: divAnimation 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+
+}
+
+.icon:hover {
+  cursor: pointer;
+  transition: ease-in 0.2s;
+  transform: scale(1.1);
+  color: #cef3ff;
+}
+.icon {
+  font-size: 1.7rem;
+  display: inline-block;
+  margin-left: 1em;
+  margin-bottom: 1em;  /* Add this line to move icons up */
+  transition: ease-out 0.2s;
+  transform: scale(1);
+  margin-right: 1em;
+}
+.itxt {
+  display: inline-block;
+  margin-right: 1em;
+}
+/* Add after your existing imports */
+@keyframes dynamicBlur {
+  0% {
+    filter: blur(5px) brightness(0.7);
+  }
+  50% {
+    filter: blur(8px) brightness(0.5);
+  }
+  100% {
+    filter: blur(5px) brightness(0.7);
+  }
+}
+
+#bgCode {
+  animation: dynamicBlur 10s ease-in-out infinite;
+  transform: scale(1.1);  /* Prevents blur edges from showing */
+  opacity: 0.6;
+}
+
+/* PHONE ZONE */
+
+@keyframes divAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    height: 300vh;
+  }
+  #logo {
+    visibility: hidden;
+  }
+  .icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5em;  /* Adjust for mobile */
+    margin-left: 0.5em;
+  }
+  .itxt {
+    font-size: 0.3em;
+    left: 2.3em;
+  }
+
+  #GLaptop {
+    width: 15rem;
+    height: 15rem;
+  }
+  h1 {
+    margin-top: 3rem;
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  #bgCode {
+    animation: dynamicBlur 20s ease-in-out infinite;
+  }
+}
